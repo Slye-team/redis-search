@@ -21,14 +21,14 @@ const index = require('./indexing'),
 	redis   = require('redis');
 
 class redis_index{
-	constructor(db = 0, db_prefix = 's:'){
+	constructor(db = 0, db_prefix = 's:', max_results = 30){
 		this._pendings  = [];
 		this._client    = redis.createClient();
 		if(typeof db != 'number')
 			db = 0;
 		this._client.select(db, (err, re) => {
 			this._index     = index(this._client, db_prefix);
-			this._search    = search(this._client, db_prefix);
+			this._search    = search(this._client, db_prefix, max_results);
 			this._pendings.forEach(value => {
 				this[value[0]](...value[1]);
 			});
