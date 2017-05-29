@@ -1,0 +1,31 @@
+{
+  "name": "redis-search",
+  "version": "0.0.1",
+  "description": "Adding search ability to your program using Redis",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slye-team/redis-search.git"
+  },
+  "keywords": [
+    "redis",
+    "redis-search",
+    "seach",
+    "key-value",
+    "store",
+    "database",
+    "indexing"
+  ],
+  "author": "Alireza Ghadimi (Qti3e)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Slye-team/redis-search/issues"
+  },
+  "homepage": "https://github.com/Slye-team/redis-search#readme",
+  "dependencies": {
+    "redis": "^2.7.1"
+  }
+}
