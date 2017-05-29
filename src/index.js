@@ -18,6 +18,7 @@
 
 const index = require('./indexing'),
 	search  = require('./searching'),
+	results = require('./results'),
 	redis   = require('redis');
 
 class redis_index{
@@ -29,6 +30,7 @@ class redis_index{
 		this._client.select(db, (err, re) => {
 			this._index     = index(this._client, db_prefix);
 			this._search    = search(this._client, db_prefix, max_results);
+			this._results   = results(this._client, db_prefix, max_results);
 			this._pendings.forEach(value => {
 				this[value[0]](...value[1]);
 			});
@@ -43,6 +45,11 @@ class redis_index{
 		if(!this._search)
 			return this._pendings.push(['search'], arguments);
 		this._search(...arguments);
+	}
+	results(){
+		if(!this._results)
+			return this._pendings.push(['results'], arguments);
+		this._results(...arguments);
 	}
 }
 module.exports = redis_index;
