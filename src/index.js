@@ -36,19 +36,19 @@ class redis_index{
 			});
 		});
 	}
-	index(){
+	index(content, key, weight = 1){
 		if(!this._index)
 			return this._pendings.push(['index', arguments]);
 		this._index(...arguments);
 	}
-	search(){
+	search(content, callback){
 		if(!this._search)
-			return this._pendings.push(['search'], arguments);
+			return this._pendings.push(['search', arguments]);
 		this._search(...arguments);
 	}
-	results(){
+	results(id, page, callback, per_page = 5){
 		if(!this._results)
-			return this._pendings.push(['results'], arguments);
+			return this._pendings.push(['results', arguments]);
 		this._results(...arguments);
 	}
 }
