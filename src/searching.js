@@ -39,7 +39,7 @@ function init(client, db_prefix, max_results) {
 			return b[1] - a[1];
 		});
 		var keys    = [];
-		for(var i = 0; i < 10; i++){
+		for(var i = 0; i < 10 && sortable[i]; i++){
 			keys.push(sortable[i][0])
 		}
 		sortable = null;
