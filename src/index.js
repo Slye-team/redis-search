@@ -45,7 +45,4 @@ class redis_index{
 		this._search(...arguments);
 	}
 }
-module.exports = {
-	index: index,
-	search: search
-};
+module.exports = redis_index;
