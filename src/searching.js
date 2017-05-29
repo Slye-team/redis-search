@@ -43,7 +43,7 @@ function init(client, db_prefix, max_results) {
 			keys.push(db_prefix + sortable[i][0])
 		}
 		sortable = null;
-		client.zinterstore(db_prefix + id, keys.length, ...keys, (err, re) => {
+		client.zunionstore(db_prefix + id, keys.length, ...keys, (err, re) => {
 			// Just keep the first `max_results` in database
 			client.zremrangebyrank(db_prefix + id, 0, -(max_results + 1));
 			// The result page id is available for 30 minutes
