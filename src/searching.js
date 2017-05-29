@@ -40,7 +40,7 @@ function init(client, db_prefix, max_results) {
 		});
 		var keys    = [];
 		for(var i = 0; i < 10 && sortable[i]; i++){
-			keys.push(sortable[i][0])
+			keys.push(db_prefix + sortable[i][0])
 		}
 		sortable = null;
 		client.zinterstore(db_prefix + id, keys.length, ...keys, (err, re) => {
@@ -48,7 +48,7 @@ function init(client, db_prefix, max_results) {
 			client.zremrangebyrank(db_prefix + id, 0, -(max_results + 1));
 			// The result page id is available for 30 minutes
 			client.expire(db_prefix + id, 60 * 60 * 0.5);
-			callback(db_prefix + id);
+			callback(db_prefix + id, re);
 		})
 	}
 }
