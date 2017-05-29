@@ -1,5 +1,5 @@
 {
-  "name": "redis-search",
+  "name": "redis-search-engine",
   "version": "0.0.1",
   "description": "Adding search ability to your program using Redis",
   "main": "src/index.js",
