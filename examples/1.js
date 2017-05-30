@@ -25,8 +25,9 @@ setTimeout(function () {
 	redis_search.search('Lorip', (id, count) => {
 		console.log(id, count);
 		// We count pages from 0
-		redis_search.results(id, 0, data => {
-			console.log(data)
+		redis_search.results(id, 0, (data, count2)=> {
+			console.log(data);
+			console.log(count == count2); // True, they are the same things
 		})
 	});
 }, 1000);
