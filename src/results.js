@@ -18,6 +18,7 @@
 
 function init(client) {
 	return function (id, page, callback, per_page = 5) {
+		console.log(id, page * per_page, (page + 1) * per_page - 1);
 		client.zrevrange(id, page * per_page, (page + 1) * per_page - 1, (err, re) => {
 			callback(re);
 		})

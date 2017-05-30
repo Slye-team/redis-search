@@ -31,6 +31,8 @@ function init(client, db_prefix, max_results) {
 	return function (content, callback) {
 		var indexes = get_indexes(content),
 			id      = randomString();
+		if(indexes.length == 0)
+			return callback(db_prefix + id, 0);
 		var sortable = [];
 		for (var key in indexes) {
 			sortable.push([key, indexes[key]]);
